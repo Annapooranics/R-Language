@@ -1,0 +1,96 @@
+VACTOR
+*******
+vec=c(23,345,56,67,68,67,"hi")//vector File
+print(vec)
+v3=c(40.2,4.5,6,7)
+print(v3)
+LIST
+******
+l1=list(3,45,67,78,67,56) //List file 
+print(l1)
+l2=list(v1,v2,v3,vec)
+print(l2)
+print(l2)
+Output
+*******
+print(l2)
+[[1]]
+[1] 4+5i 4+0i 6+0i 7+0i
+
+[[2]]
+[1] 40.232  4.020  6.000  7.000
+
+[[3]]
+[1] 40.2  4.5  6.0  7.0
+
+[[4]]
+[1] "23"  "345" "56"  "67"  "68"  "67"  "hi" 
+
+Output
+******
+print(l2[[3]][4])
+[1] 7
+
+Output
+******
+print(l2[3])
+[[1]]
+[1] 40.2  4.5  6.0  7.0
+FACTOR
+******
+f1=factor(c("IT","MECH","CIVIL","ECE","IT","MECH","CIVIL","ECE","EEE","IT","MECH","CIVIL","ECE","EEE","IT","MECH","CIVIL","ECE","EEE"))
+print(f1)
+table(f1)
+Output
+*****
+print(f1)
+ [1] IT    MECH  CIVIL ECE   IT    MECH  CIVIL ECE   EEE   IT    MECH  CIVIL ECE   EEE  
+[15] IT    MECH  CIVIL ECE   EEE  
+Levels: CIVIL ECE EEE IT MECH
+> table(f1)
+f1
+CIVIL   ECE   EEE    IT  MECH 
+    4     4     3     4     4 
+    
+ Matrix
+ *******
+ m1=matrix(1:15,nrow=5,ncol=3)
+print(m1)
+OUTput
+_________
+     [,1] [,2] [,3]
+[1,]    1    6   11
+[2,]    2    7   12
+[3,]    3    8   13
+[4,]    4    9   14
+[5,]    5   10   15
+
+> m1=matrix(1:15,nrow=5,ncol=3,byrow=TRUE)
+> print(m1)
+     [,1] [,2] [,3]
+[1,]    1    2    3
+[2,]    4    5    6
+[3,]    7    8    9
+[4,]   10   11   12
+[5,]   13   14   15
+> 
+
+DATA FRAME
+********
+empdet=data.frame(eid=c(1,2,3),
++                   ename=c('anu','priya','abi'),
++                   sal=c(34599,34560,45000))
+> print(empdet)
+  eid ename   sal
+1   1   anu 34599
+2   2 priya 34560
+3   3   abi 45000
+FUNCTION -->APPEND
+empdet$dept=c("IT","CSE","CIVIL")
+> print(empdet)
+  eid ename   sal  dept
+1   1   anu 34599    IT
+2   2 priya 34560   CSE
+3   3   abi 45000 CIVIL
+> 
+
