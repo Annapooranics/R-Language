@@ -1,0 +1,77 @@
+READ
+*****
+read.csv("D:/Datasets/Datasets/data_csv.csv")->csvobj
+
+class(csvobj)
+[1] "data.frame"
+
+WRITE
+*****
+write.csv(csvobj,"D:/Datasets/data.csv")
+
+getwd()  //Find default location
+setwd("D:/Datasets") // Change the Location
+
+library("xlsx")
+read.xlsx("EmpDetails.xlsx",sheetname='Emp')->xobj
+
+text file
+*********
+read.table("LungCapData.txt",sep="\t")->txtdb
+write.table(txtdb,"Ex1.txt",row.names = FALSE)
+read.table("LungCapData.txt",sep="\t",header=TRUE)->txtdb
+
+
+read.table("IncomeDataset.txt",sep="|",header=TRUE)->txtdb
+write.table(tdb,"Ex2.txt",row.names = FALSE)
+
+View(txtdb)
+
+str(txtdb)
+'data.frame':	725 obs. of  6 variables:
+ $ LungCap  : num  6.47 10.12 9.55 11.12 4.8 ...
+ $ Age      : int  6 18 16 14 5 11 8 11 15 11 ...
+ $ Height   : num  62.1 74.7 69.7 71 56.9 58.7 63.3 70.4 70.5 59.2 ...
+ $ Smoke    : Factor w/ 2 levels "no","yes": 1 2 1 1 1 1 1 1 1 1 ...
+ $ Gender   : Factor w/ 2 levels "female","male": 2 1 1 2 2 1 2 2 2 2 ...
+ $ Caesarean: Factor w/ 2 levels "no","yes": 1 1 2 1 1 1 2 1 1 1 ...
+ 
+table(txtdb$Gender)
+
+> table(txtdb$Gender)
+
+female   male 
+   358    367 
+
+summary(txtdb)
+> summary(txtdb)
+    LungCap            Age            Height      Smoke        Gender    Caesarean
+ Min.   : 0.507   Min.   : 3.00   Min.   :45.30   no :648   female:358   no :561  
+ 1st Qu.: 6.150   1st Qu.: 9.00   1st Qu.:59.90   yes: 77   male  :367   yes:164  
+ Median : 8.000   Median :13.00   Median :65.40                                   
+ Mean   : 7.863   Mean   :12.33   Mean   :64.84                                   
+ 3rd Qu.: 9.800   3rd Qu.:15.00   3rd Qu.:70.30                                   
+ Max.   :14.675   Max.   :19.00   Max.   :81.80
+ 
+ 
+ AGGREGATE FUN
+ ****************
+  Max.   :14.675   Max.   :19.00   Max.   :81.80                                   
+> sum(txtdb$LungCap)
+[1] 5700.782
+> min(txtdb$Height)
+[1] 45.3
+> max(txtdb$Age)
+[1] 19
+> length(txtdb$Height)
+[1] 725
+
+
+head(txtdb,15)
+
+
+> txtdb[1,3]
+[1] 62.1
+> txtdb[1:10,3]
+ [1] 62.1 74.7 69.7 71.0 56.9 58.7 63.3 70.4 70.5 59.2
+> 
