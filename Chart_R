@@ -1,0 +1,47 @@
+Link for Oracle
+https://bit.ly/33MSYV8
+
+
+v1=c(34,56,26,78,90,15)
+lbl=c('A','B','C','D','E','F')
+pie(v1,main="Title",col=c(0:6),labels = lbl)
+pie(v1,main="Title",col=rainbow(length(v1)),labels = lbl)
+percent=round(100*v1/sum(v1),2)
+pie(v1,main="Title",col=rainbow(length(v1)),labels = percent)
+legend("topright",lbl,cex=0.9,fill=rainbow(length(v1)))
+
+setwd("D:/Datasets/")
+read.table("SalesData.txt",sep="\t",header=TRUE)->sdb
+View(sdb)
+lb=c("Albania","Angola","Australia","Austria","Azerbaijan","Bangladesh","Belize","Brunei","Bulgaria")
+percent=round(100*sdb$Total.Profit/sum(sdb$Total.Profit),2)
+pie(sdb$Total.Profit,main="Country Profit",col=rainbow(length(sdb$Total.Profit)),labels = lb)
+legend("topright",lb,cex=0.6,fill=rainbow(length(sdb$Total.Profit)))
+
+
+legend("topright",as.character(sdb$Country),cex=0.6,fill=rainbow(length(sdb$Total.Profit)))
+
+Bar Chart
+**********
+read.table("SalesData.txt",sep="\t",header=TRUE)->sdb
+barplot(sdb$Total.Profit,
+        main="Country Profit",
+        xlab = "Countries",
+        ylab = "Total Profit",
+        names.arg = percent,  horiz = TRUE, --> hORIZANTAL GRAPH (TRUE)
+        col=rainbow(length(sdb$Total.Profit)))
+legend("topright",as.character(sdb$Country),cex=0.6,fill=rainbow(length(sdb$Total.Profit)))
+
+val<-matrix(c(2,9,3,11,9,30,8,17,3,12,5,2,8,10,11),nrow = 3,ncol=5,byrow = TRUE)
+colors=c("green","orange","blue") -->nrow are equal
+m=c("Jan","Feb","Mar","Apr","Jun") -->column value equal
+r=c("East","West","North")
+barplot(val,main = "Total Revenue",xlab = "Months",
+        ylab = "Revenue",names.arg = m,col=colors)
+        
+barplot(val,main = "Total Revenue",xlab = "Months",
+        ylab = "Revenue",names.arg = m,col=colors,beside = TRUE) -->SIDE BARS
+        
+        
+        legend("topright",as.character(sdb$Country),cex=0.6,
+       fill=rainbow(length(sdb$Total.Profit)))
