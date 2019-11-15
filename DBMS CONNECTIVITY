@@ -1,0 +1,28 @@
+install package RODBC
+
+oracle ->RUN sql command line
+
+
+
+
+SQL> conn system/anu
+Connected.
+SQL> alter user hr identified by anu account unlock;
+
+User altered.
+
+SQL> conn hr/anu
+Connected.
+SQL>
+
+Connectiong ODBC
+
+Control Panel\All Control Panel Items\Administrative Tools
+ODBC Data Sources (64-bit) 
+userdsn --> add --> oracle select  -> name  --> kcetdemo  --> test connection --     >user name -->hr        pwd -->anu
+_______________________________________________________________
+
+library(RODBC)
+con=odbcConnect("kcetdemo",uid="hr",pwd="anu")
+
+
