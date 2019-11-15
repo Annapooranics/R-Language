@@ -1,0 +1,65 @@
+txdb[txdb$Age==18 , ]
+
+LungCap Age Height Smoke Gender Caesarean
+2    10.125  18   74.7   yes female        no
+30   10.475  18   72.0   yes female        no
+55   12.225  18   79.6    no   male        no
+96   10.825  18   75.7    no female        no
+txdb[txdb$Age==18,c(3,4)]
+Height Smoke
+2     74.7   yes
+30    72.0   yes
+55    79.6    no
+96    75.7    no
+112   76.3    no
+118   71.0    no
+read.table("IncomeDataset.txt",sep="|",header=TRUE)->txt1db
+
+
+names(txt1db)=c("Sno","Income","Rooms")
+
+summary(txt1db)
+
+subset(txt1db,Income>=26000 & Income<=max(Income),select = c(Income,Rooms))->newdb
+View(newdb)
+summary(newdb)
+
+summary(newdb)
+     Income            Rooms      
+ Min.   :  26000   Min.   :1.000  
+ 1st Qu.:  44000   1st Qu.:5.000  
+ Median :  65000   Median :6.000  
+ Mean   :  84608   Mean   :6.011  
+ 3rd Qu.:  97700   3rd Qu.:7.000  
+ Max.   :1620560   Max.   :9.000  
+ 
+ grpname=cut(newdb$Income,
+            breaks = c(26000-1,44000,65000,98000,1000000,max(newdb$Income)),
+            labels = c("Low Mid","Middle","Upper Mid","Wealthy","Rich"))
+head(grpname)
+head(newdb)
+
+Income Rooms
+1 105530     6
+2 141500     8
+3 161400     6
+4  72600     5
+5  61000     5
+6  92000     6
+
+cbind(newdb,grpname)->newdb //column bind
+
+table(newdb$grpname) //column count
+
+  Low Mid    Middle Upper Mid   Wealthy      Rich 
+    22690     22689     22804     22424         3 
+    
+    
+     table(newdb$grpname,newdb$Rooms)
+           
+               1    2    3    4    5    6    7    8    9
+  Low Mid    438 1056 2380 4304 5328 4371 2335 1288 1190
+  Middle     174  624 1589 3303 5065 5039 3220 1999 1676
+  Upper Mid   84  340  948 2132 4008 5303 4343 3092 2554
+  Wealthy     58  235  592 1227 2288 3706 4295 4378 5645
+  Rich         0    0    0    0    1    0    0    1    1
